@@ -1,0 +1,133 @@
+﻿@model GoEngineerCodingExample.Models.SpeciesModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit @Model.name</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="classification" class="control-label"></label>
+                <input asp-for="classification" class="form-control" />
+                <span asp-validation-for="classification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="designation" class="control-label"></label>
+                <input asp-for="designation" class="form-control" />
+                <span asp-validation-for="designation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="average_height" class="control-label"></label>
+                <input asp-for="average_height" class="form-control" />
+                <span asp-validation-for="average_height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="skin_colors" class="control-label"></label>
+                <input asp-for="skin_colors" class="form-control" />
+                <span asp-validation-for="skin_colors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="hair_colors" class="control-label"></label>
+                <input asp-for="hair_colors" class="form-control" />
+                <span asp-validation-for="hair_colors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eye_colors" class="control-label"></label>
+                <input asp-for="eye_colors" class="form-control" />
+                <span asp-validation-for="eye_colors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="average_lifespan" class="control-label"></label>
+                <input asp-for="average_lifespan" class="form-control" />
+                <span asp-validation-for="average_lifespan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="homeworld" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <select class="form-select" aria-label="Default select example" name="SelectedHomeworld">
+                    @foreach (PlanetModel planetModel in Model.HomeworldOptions)
+                    {
+                        @if (Model.homeworld == planetModel.url)
+                        {
+                            <option value="@planetModel.url" selected>@planetModel.name</option>
+                        }
+                        else
+                        {
+                            <option value="@planetModel.url">@planetModel.name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="language" class="control-label"></label>
+                <input asp-for="language" class="form-control" />
+                <span asp-validation-for="language" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:15px">
+                <label asp-for="people" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var character in Model.CharacterOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@character.url" name="selectedCharacters" id="characteritem-@character.Id" checked="@Model.people.Contains(character.url)">
+                        <label class="form-check-label" for="characteritem-@character.Id" style="margin-left: 5px">
+                            @character.name
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group" style="margin-top:15px">
+                <label asp-for="films" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var film in Model.FilmOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@film.url" name="selectedFilms" id="filmitem-@film.Id" checked="@Model.films.Contains(film.url)">
+                        <label class="form-check-label" for="filmitem-@film.Id" style="margin-left: 5px">
+                            @film.title
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="created" class="control-label"></label>
+                <input asp-for="created" class="form-control" />
+                <span asp-validation-for="created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="edited" class="control-label"></label>
+                <input asp-for="edited" class="form-control" />
+                <span asp-validation-for="edited" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="url" class="control-label"></label>
+                <input asp-for="url" class="form-control" />
+                <span asp-validation-for="url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

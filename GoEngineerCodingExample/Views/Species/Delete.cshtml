@@ -1,0 +1,120 @@
+﻿@model GoEngineerCodingExample.Models.SpeciesModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete @Model.name?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.classification)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.classification)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.designation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.designation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.average_height)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.average_height)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.skin_colors)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.skin_colors)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.hair_colors)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.hair_colors)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.eye_colors)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.eye_colors)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.average_lifespan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.average_lifespan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.homeworld)
+        </dt>
+        <dd class = "col-sm-10">
+            <a asp-area=" " asp-controller="People" asp-action="Details" asp-route-id="@Model.HomeworldLink.Id">@Model.HomeworldLink.Name</a>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.language)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.language)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.people)
+        </dt>
+        <dd class = "col-sm-10">
+            @foreach (var link in Model.CharacterLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="People" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.films)
+        </dt>
+        <dd class = "col-sm-10">
+            @foreach (var link in Model.FilmLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="Film" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.created)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.created)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.edited)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.edited)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+        <dd class = "col-sm-10">
+            <a href="@Html.DisplayFor(model => model.url)">View in SWAPI</a>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

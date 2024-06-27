@@ -1,0 +1,133 @@
+﻿@model GoEngineerCodingExample.Models.PeopleModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for @Model.name</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.height)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.height)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mass)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mass)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.hair_color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.hair_color)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.skin_color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.skin_color)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.eye_color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.eye_color)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.birth_year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.birth_year)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.homeworld)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-area=" " asp-controller="Planet" asp-action="Details" asp-route-id="@Model.HomeworldLink.Id">@Model.HomeworldLink.Name</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.films)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var link in Model.FilmLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="Film" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.species)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var link in Model.SpeciesLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="Species" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.vehicles)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var link in Model.VehicleLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="Vehicle" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.starships)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var link in Model.StarShipLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="StarShipModels" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.created)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.created)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.edited)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.edited)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+        <dd class = "col-sm-10">
+            <a href="@Html.DisplayFor(model => model.url)">View in SWAPI</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

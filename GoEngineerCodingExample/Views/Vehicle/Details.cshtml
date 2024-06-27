@@ -1,0 +1,123 @@
+﻿@model GoEngineerCodingExample.Models.VehicleModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for @Model.name</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.model)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.model)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.manufacturer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.manufacturer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cost_in_credits)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cost_in_credits)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.length)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.length)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.max_atmosphering_speed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.max_atmosphering_speed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.crew)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.crew)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.passengers)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.passengers)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cargo_capacity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cargo_capacity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.consumables)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.consumables)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.vehicle_class)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.vehicle_class)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pilots)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var link in Model.PilotLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="People" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.films)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var link in Model.FilmLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="Film" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.created)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.created)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.edited)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.edited)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+        <dd class = "col-sm-10">
+            <a href="@Html.DisplayFor(model => model.url)">View in SWAPI</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

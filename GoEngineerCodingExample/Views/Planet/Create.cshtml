@@ -1,0 +1,114 @@
+﻿@model GoEngineerCodingExample.Models.PlanetModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New Planet</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rotation_period" class="control-label"></label>
+                <input asp-for="rotation_period" class="form-control" />
+                <span asp-validation-for="rotation_period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="orbital_period" class="control-label"></label>
+                <input asp-for="orbital_period" class="form-control" />
+                <span asp-validation-for="orbital_period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="diameter" class="control-label"></label>
+                <input asp-for="diameter" class="form-control" />
+                <span asp-validation-for="diameter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="climate" class="control-label"></label>
+                <input asp-for="climate" class="form-control" />
+                <span asp-validation-for="climate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gravity" class="control-label"></label>
+                <input asp-for="gravity" class="form-control" />
+                <span asp-validation-for="gravity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="terrain" class="control-label"></label>
+                <input asp-for="terrain" class="form-control" />
+                <span asp-validation-for="terrain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="surface_water" class="control-label"></label>
+                <input asp-for="surface_water" class="form-control" />
+                <span asp-validation-for="surface_water" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="population" class="control-label"></label>
+                <input asp-for="population" class="form-control" />
+                <span asp-validation-for="population" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:15px">
+                <label asp-for="residents" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var resident in Model.ResidentOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@resident.url" name="selectedResidents" id="residentitem-@resident.Id">
+                        <label class="form-check-label" for="residentitem-@resident.Id" style="margin-left: 5px">
+                            @resident.name
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group" style="margin-top:15px">
+                <label asp-for="films" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var film in Model.FilmOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@film.url" name="selectedFilms" id="filmitem-@film.Id">
+                        <label class="form-check-label" for="filmitem-@film.Id" style="margin-left: 5px">
+                            @film.title
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="created" class="control-label"></label>
+                <input asp-for="created" class="form-control" />
+                <span asp-validation-for="created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="edited" class="control-label"></label>
+                <input asp-for="edited" class="form-control" />
+                <span asp-validation-for="edited" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="url" class="control-label"></label>
+                <input asp-for="url" class="form-control" />
+                <span asp-validation-for="url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

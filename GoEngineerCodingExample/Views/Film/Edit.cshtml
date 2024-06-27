@@ -1,0 +1,142 @@
+﻿@model GoEngineerCodingExample.Models.FilmModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit @Model.title</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="episode_id" class="control-label"></label>
+                <input asp-for="episode_id" class="form-control" />
+                <span asp-validation-for="episode_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="opening_crawl" class="control-label"></label>
+                <input asp-for="opening_crawl" class="form-control" />
+                <span asp-validation-for="opening_crawl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="director" class="control-label"></label>
+                <input asp-for="director" class="form-control" />
+                <span asp-validation-for="director" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="producer" class="control-label"></label>
+                <input asp-for="producer" class="form-control" />
+                <span asp-validation-for="producer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="release_date" class="control-label"></label>
+                <input asp-for="release_date" class="form-control" />
+                <span asp-validation-for="release_date" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:15px">
+                <label asp-for="characters" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var character in Model.CharacterOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@character.url" name="selectedCharacters" id="characteritem-@character.Id" checked="@Model.characters.Contains(character.url)">
+                        <label class="form-check-label" for="characteritem-@character.Id" style="margin-left: 5px">
+                            @character.name
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="planets" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var planet in Model.PlanetOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@planet.url" name="selectedplanets" id="planetitem-@planet.Id" checked="@Model.planets.Contains(planet.url)">
+                        <label class="form-check-label" for="characteritem-@planet.Id" style="margin-left: 5px">
+                            @planet.name
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="starships" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var starship in Model.StarShipOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@starship.url" name="selectedStarShips" id="starshipitem-@starship.Id" checked="@Model.starships.Contains(starship.url)">
+                        <label class="form-check-label" for="starshipitem-@starship.Id" style="margin-left: 5px">
+                            @starship.name
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="vehicles" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var vehicle in Model.VehicleOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@vehicle.url" name="selectedVehicles" id="vehicleitem-@vehicle.Id" checked="@Model.vehicles.Contains(vehicle.url)">
+                        <label class="form-check-label" for="vehicleitem-@vehicle.Id" style="margin-left: 5px">
+                            @vehicle.name
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="species" class="control-label"></label>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (var species in Model.SpeciesOptions)
+                {
+                    <div style="margin-right: 15px">
+                        <input class="form-check-input" type="checkbox" value="@species.url" name="selectedSpecies" id="speciesitem-@species.Id" checked="@Model.species.Contains(species.url)">
+                        <label class="form-check-label" for="speciesitem-@species.Id" style="margin-left: 5px">
+                            @species.name
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="created" class="control-label"></label>
+                <input asp-for="created" class="form-control" />
+                <span asp-validation-for="created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="edited" class="control-label"></label>
+                <input asp-for="edited" class="form-control" />
+                <span asp-validation-for="edited" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="url" class="control-label"></label>
+                <input asp-for="url" class="form-control" />
+                <span asp-validation-for="url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

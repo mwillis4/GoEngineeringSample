@@ -1,0 +1,114 @@
+﻿@model GoEngineerCodingExample.Models.PlanetModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete @Model.name?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rotation_period)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rotation_period)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.orbital_period)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.orbital_period)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.diameter)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.diameter)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.climate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.climate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gravity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gravity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.terrain)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.terrain)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.surface_water)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.surface_water)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.population)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.population)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.residents)
+        </dt>
+        <dd class = "col-sm-10">
+            @foreach (var link in Model.ResidentLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="People" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.films)
+        </dt>
+        <dd class = "col-sm-10">
+            @foreach (var link in Model.FilmLinks)
+            {
+                <li>
+                    <a asp-area=" " asp-controller="Film" asp-action="Details" asp-route-id="@link.Id">@link.Name</a>
+                </li>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.created)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.created)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.edited)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.edited)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+        <dd class = "col-sm-10">
+            <a href="@Html.DisplayFor(model => model.url)">View in SWAPI</a>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
